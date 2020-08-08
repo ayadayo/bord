@@ -1,43 +1,38 @@
 <template>
-  <v-list three-line>
-    <template v-for="(comment, index) in comments">
-      <v-list-item
-          :key="index"
-          avatar
-      >
-        <v-list-item-avatar>
-          <img :src="comment.avatar">
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-subtitle class="text--primary subheading">{{comment.content}}</v-list-item-subtitle>
-          <v-list-item-subtitle>
-            {{comment.createdAt.toDate().toLocaleString()}}
-          </v-list-item-subtitle>
-        </v-list-item-content>
-
-        <v-list-item-action>
-        </v-list-item-action>
-      </v-list-item>
-      <v-divider :key="comment.id"></v-divider>
-    </template>
-  </v-list>
+  <div class="c-list">
+    <div v-for="(comment,index) in comments" :key="index" class="c-list__item">
+    <p class="c-list__number">電話番号：{{comment.tel}}</p>
+    <p class="c-list__number">日にち：{{comment.date}}</p>
+    <p class="c-list__name">担当者：{{comment.name}}</p>
+    <p class="c-list__content">コメント：{{comment.content}}</p>
+    </div>
+  </div>
 </template>
-
 <script>
-  import {db} from '../plugins/firebase';
-
-  export default {
-    name: "ChatBoard",
-    data: () => ({
-      comments: [],
-    }),
-    firestore() {
-      return {
-        // firestoreのcommentsコレクションを参照
-        comments: db.collection('comments').orderBy('createdAt')
-
-      }
-    },
+import {db} from '../plugins/firebase';
+export default {
+  name:'chatBord',
+  data:function(){
+    return {
+      comments:[]
+    }
+  },
+  firestore(){
+    return {
+      comments:db.collection('comments').orderBy('createdAt')
+    }
   }
+
+}
 </script>
+<style>
+  .c-list {
+    margin-top: 20px;
+  }
+  .c-list__item {
+    padding: 10px 0;
+  }
+  .c-list__item:nth-child(n+2) {
+    border-top: 1px solid #ddd;
+  }
+</style>
