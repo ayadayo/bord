@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     deletedComments:function(id){
-      if(!confirm('この記録を削除しますか？')) {
+      if(!window.confirm('この記録を削除しますか？')) {
         return
       }
       db.collection('comments').doc(id).delete()
