@@ -98,7 +98,7 @@ export default {
     },
     clear() {
       // const telForm = this.$refs.telForm;
-      document.this.$refs.telForm.reset();
+      this.$refs.telForm.reset();
     },
     ckeckForm:function(event){
       this.inputdata.errors = [];

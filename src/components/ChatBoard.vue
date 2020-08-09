@@ -1,6 +1,6 @@
 <template>
   <div class="c-list">
-    <div v-for="(comment,index) in comments" :key="index" class="c-list__item">
+    <div v-for="(comment,index) in comments" :key="index" class="c-list__item" tabindex="1">
     <p class="c-list__number" v-if="comment.date">着信日：{{comment.date}}</p>
     <p class="c-list__number" v-if="comment.tel">電話番号：{{comment.tel}}</p>
     <p class="c-list__name" v-if="comment.name">誰宛の電話か：{{comment.name}}さん</p>
