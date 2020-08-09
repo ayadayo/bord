@@ -22,7 +22,7 @@
       type="date" 
       id="telDate"
       class="c-input"
-      v-model="inputdata.inputDate"
+      v-model="inputDate"
       >
     </div>
     <div class="c-form__item">
@@ -62,26 +62,36 @@
 <script>
 import {db} from '../plugins/firebase'
 import staffList from '../config/seezStaff'
+
+function zeropadding(val){
+  return ('00' + val).slice(-2);
+}
+
 export default {
   name:'chatForm',//formなど、htmlタグに存在している名前はダメ
   data:function(){
+    const today = new Date();
     return {
+      staffList:staffList,
+      isActive:false,      
       inputdata:{
         errors:[],
-        inputDate:'',
         inputNumber:null,
         inputContent:'',
         inputWho:''
       },
-      staffList:staffList,
-      isActive:false
+      inputDate:[
+        today.getFullYear(),
+        zeropadding(today.getMonth() +1),
+        zeropadding(today.getDate()),
+      ].join('-'),
     }
   },
   methods: {
     addComment(){
       const timeStamp = new Date()
       db.collection('comments').add({
-          date:this.inputdata.inputDate,
+          date:this.inputDate,
           tel:this.inputdata.inputNumber,
           content:this.inputdata.inputContent,
           name:this.inputdata.inputWho,
@@ -100,7 +110,6 @@ export default {
     },
     clear() {
       // const telForm = this.$refs.telForm;
-      this.inputdata.inputDate = '';
       this.inputdata.inputNumber = '';
       this.inputdata.inputContent = '';
       this.inputdata.inputWho = '';
