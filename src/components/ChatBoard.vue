@@ -1,10 +1,10 @@
 <template>
   <div class="c-list">
     <div v-for="(comment,index) in comments" :key="index" class="c-list__item">
+    <p class="c-list__number" v-if="comment.date">着信日：{{comment.date}}</p>
     <p class="c-list__number" v-if="comment.tel">電話番号：{{comment.tel}}</p>
-    <p class="c-list__number" v-if="comment.date">日にち：{{comment.date}}</p>
-    <p class="c-list__name" v-if="comment.name">担当者：{{comment.name}}</p>
-    <p class="c-list__content" v-if="comment.content">コメント：{{comment.content}}</p>
+    <p class="c-list__name" v-if="comment.name">誰宛の電話か：{{comment.name}}さん</p>
+    <p class="c-list__content" v-if="comment.content">内容：{{comment.content}}</p>
     <div class="icon-trash" @click="deletedComments(comment.id)">
       <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="opacity: 1;" xml:space="preserve">
       <g>
@@ -65,10 +65,12 @@ export default {
     right: 0;
     bottom:10px;
   }
+
   .c-list__item .icon-trash svg {
     width: 20px;
     cursor: pointer;
   }
+
   .c-list__item:nth-child(n+2) {
     border-top: 1px solid #ddd;
   }
