@@ -4,7 +4,7 @@
 firebaseのHosting機能を使用しています。
 https://vue-bord-39ce4.web.app/
 
-## メイン参考(詳細はISSUに記載)
+## メイン参考(詳細はIssuesに記載)
 https://qiita.com/ryo2132/items/2881d8223eb2ad3050a1
 
 ## Project setup
