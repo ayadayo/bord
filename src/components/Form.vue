@@ -87,6 +87,8 @@ export default {
           name:this.inputdata.inputWho,
           createdAt:timeStamp
       })
+        this.clear();
+
     },
     timerStart(){
       this.isActive = true;
@@ -98,7 +100,10 @@ export default {
     },
     clear() {
       // const telForm = this.$refs.telForm;
-      this.$refs.telForm.reset();
+      this.inputdata.inputDate = '';
+      this.inputdata.inputNumber = '';
+      this.inputdata.inputContent = '';
+      this.inputdata.inputWho = '';
     },
     ckeckForm:function(event){
       this.inputdata.errors = [];
@@ -108,7 +113,6 @@ export default {
       if(!this.inputdata.errors.length) {
         this.addComment();
         this.timerStart();
-        this.clear();
       }
       event.preventDefault();
     }
