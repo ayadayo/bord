@@ -1,6 +1,7 @@
 <template>
   <form 
     class="c-form" 
+    ref="telForm"
     :class="{'is-overlay':isActive}"
     novalidate="true"
     @submit="ckeckForm"
@@ -20,6 +21,7 @@
       <input 
       type="date" 
       id="telDate"
+      class="c-input"
       v-model="inputdata.inputDate"
       >
     </div>
@@ -28,6 +30,7 @@
       <input 
       type="number" 
       id="telNumber"
+      class="c-input"
       v-model="inputdata.inputNumber"
       >
     </div>
@@ -36,6 +39,7 @@
       <select 
       name="telWho" 
       id="telWho" 
+      class="c-input"
       v-model="inputdata.inputWho">
       <option value="">選択してください</option>
         <option v-for="staff of staffList"
@@ -48,6 +52,7 @@
       <textarea 
       id="telContent" 
       rows="5" 
+      class="c-input"
       v-model="inputdata.inputContent"
       ></textarea>
     </div>
@@ -91,6 +96,10 @@ export default {
       this.isActive = false;
       clearInterval(this.timerStart);
     },
+    clear() {
+      // const telForm = this.$refs.telForm;
+      document.this.$refs.telForm.reset();
+    },
     ckeckForm:function(event){
       this.inputdata.errors = [];
       if(!this.inputdata.inputNumber) {
@@ -99,6 +108,7 @@ export default {
       if(!this.inputdata.errors.length) {
         this.addComment();
         this.timerStart();
+        this.clear();
       }
       event.preventDefault();
     }
