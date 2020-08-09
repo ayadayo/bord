@@ -51,7 +51,7 @@
       v-model="inputdata.inputContent"
       ></textarea>
     </div>
-    <button class="c-button">登録する</button>
+    <button class="c-button">記録する</button>
   </form>
 </template>
 <script>
