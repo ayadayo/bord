@@ -163,7 +163,7 @@ export default {
   .c-form__item:nth-child(n+2) {
     margin-top: 10px;
   }
-  .c-form input,.c-form textarea,.c-form select {
+  .l-wrapper input,.l-wrapper textarea,.l-wrapper select {
     margin-left: 5px;
     background: #e9e9e9;
     border-radius: 5px;
